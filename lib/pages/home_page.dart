@@ -15,7 +15,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final customPaint = CustomPaint();
+  final customPaint = const CustomPaint();
   List<Facility> listFacility = [
     Facility(name: 'Wi-Fi'),
     Facility(name: 'Kitchen'),
@@ -23,6 +23,8 @@ class _HomePageState extends State<HomePage> {
     Facility(name: 'Washing Machine'),
     Facility(name: 'Iron')
   ];
+
+  popUpMenu() {}
 
   bool checkBoxValue = false;
   static const double _minVal = 1.0;
@@ -34,57 +36,99 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
         body: SafeArea(
             child: Center(
-                child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-          //facilities bottom sheet
-          MaterialButton(
-              height: 50,
-              minWidth: 200,
-              shape: const StadiumBorder(),
-              color: Colors.blueAccent.shade700,
-              onPressed: () {
-                showModalBottomSheet(
-                    isScrollControlled: true,
-                    shape: const RoundedRectangleBorder(
-                        borderRadius:
-                            BorderRadius.vertical(top: Radius.circular(10))),
-                    context: context,
-                    builder: (context) => priceRangeSheet());
-              },
-              child: const Text("Price Range",
-                  style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white))),
-          const SizedBox(
-            height: 100,
-          ),
-          //price range bottom sheet
-          MaterialButton(
-              height: 50,
-              minWidth: 200,
-              shape: const StadiumBorder(),
-              color: Colors.blueAccent.shade700,
-              onPressed: () {
-                showModalBottomSheet(
-                    isScrollControlled: true,
-                    shape: const RoundedRectangleBorder(
-                        borderRadius:
-                            BorderRadius.vertical(top: Radius.circular(5))),
-                    context: context,
-                    builder: (context) => facilitiesSheet());
-              },
-              child: const Text("Facilities",
-                  style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white)))
-        ]))));
+                child: SingleChildScrollView(
+      child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+        //facilities bottom sheet
+        MaterialButton(
+            height: 50,
+            minWidth: 200,
+            shape: const StadiumBorder(),
+            color: Colors.blueAccent.shade700,
+            onPressed: () {
+              showModalBottomSheet(
+                  isScrollControlled: true,
+                  shape: const RoundedRectangleBorder(
+                      borderRadius:
+                          BorderRadius.vertical(top: Radius.circular(10))),
+                  context: context,
+                  builder: (context) => priceRangeSheet());
+            },
+            child: const Text("Price Range",
+                style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white))),
+        const SizedBox(
+          height: 100,
+        ),
+        //price range bottom sheet
+        MaterialButton(
+            height: 50,
+            minWidth: 200,
+            shape: const StadiumBorder(),
+            color: Colors.blueAccent.shade700,
+            onPressed: () {
+              showModalBottomSheet(
+                  isScrollControlled: true,
+                  shape: const RoundedRectangleBorder(
+                      borderRadius:
+                          BorderRadius.vertical(top: Radius.circular(5))),
+                  context: context,
+                  builder: (context) => facilitiesSheet());
+            },
+            child: const Text("Facilities",
+                style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white))),
+        const SizedBox(height: 100),
+        //price range bottom sheet
+        MaterialButton(
+            height: 50,
+            minWidth: 200,
+            shape: const StadiumBorder(),
+            color: Colors.blueAccent.shade700,
+            onPressed: () {
+              showModalBottomSheet(
+                  isScrollControlled: true,
+                  shape: const RoundedRectangleBorder(
+                      borderRadius:
+                          BorderRadius.vertical(top: Radius.circular(20))),
+                  context: context,
+                  builder: (context) => frame2());
+            },
+            child: const Text("Frame 2",
+                style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white))),
+        const SizedBox(height: 100),
+        //price range bottom sheet
+        MaterialButton(
+            height: 50,
+            minWidth: 200,
+            shape: const StadiumBorder(),
+            color: Colors.blueAccent.shade700,
+            onPressed: () {
+              showModalBottomSheet(
+                  isScrollControlled: true,
+                  shape: const RoundedRectangleBorder(
+                      borderRadius:
+                          BorderRadius.vertical(top: Radius.circular(20))),
+                  context: context,
+                  builder: (context) => frame3());
+            },
+            child: const Text("Frame 3",
+                style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white))),
+      ]),
+    ))));
   }
 
   Widget priceRangeSheet() {
-    return Container(
+    return SizedBox(
         height: 800,
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           //#line
@@ -92,17 +136,17 @@ class _HomePageState extends State<HomePage> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Container(
-                  margin: EdgeInsets.symmetric(vertical: 20),
+                  margin: const EdgeInsets.symmetric(vertical: 20),
                   height: 2,
                   width: 50,
                   color: Colors.black),
-              Divider(color: Colors.black)
+              const Divider(color: Colors.black)
             ],
           ),
           //#price range text
           Expanded(
               child: Padding(
-                  padding: EdgeInsets.all(25),
+                  padding: const EdgeInsets.all(25),
                   child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -123,7 +167,7 @@ class _HomePageState extends State<HomePage> {
                               style: TextStyle(
                                   fontSize: 15, fontWeight: FontWeight.w400))
                         ]),
-                        SizedBox(height: 100),
+                        const SizedBox(height: 100),
                         Stack(
                           children: [
                             SizedBox(
@@ -136,7 +180,7 @@ class _HomePageState extends State<HomePage> {
                             StatefulBuilder(
                               builder: (context, setState) => RangeSlider(
                                   activeColor: Colors.white,
-                                  inactiveColor:Colors.white,
+                                  inactiveColor: Colors.white,
                                   divisions: 40,
                                   min: _minVal,
                                   max: _maxVal,
@@ -188,18 +232,18 @@ class _HomePageState extends State<HomePage> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Container(
-                margin: EdgeInsets.symmetric(vertical: 20),
+                margin: const EdgeInsets.symmetric(vertical: 20),
                 height: 2,
                 width: 50,
                 color: Colors.black,
               ),
-              Divider(color: Colors.black),
+              const Divider(color: Colors.black),
             ],
           ),
           //#checkBar List
           Expanded(
               child: Padding(
-                  padding: EdgeInsets.all(25),
+                  padding: const EdgeInsets.all(25),
                   child: ListView(children: [
                     const Text(
                       "Facilities",
@@ -245,5 +289,288 @@ class _HomePageState extends State<HomePage> {
                         ))
                   ]))
         ]));
+  }
+
+  Widget frame2() {
+    return Container(
+      padding: const EdgeInsets.only(bottom: 30, left: 15, right: 15, top: 30),
+      decoration: BoxDecoration(
+          color: Colors.white, borderRadius: BorderRadius.circular(30)),
+      height: MediaQuery.of(context).size.height * 0.9,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 10),
+            child: Column(
+              children: [
+                /// Create addres text
+                Row(
+                  children: [
+                    IconButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      icon: const Icon(Icons.arrow_back, size: 27),
+                    ),
+                    const SizedBox(width: 17),
+                    const Text(
+                      "Введите адрес",
+                      style: TextStyle(color: Colors.black, fontSize: 17),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 60),
+
+                ///Search
+                TextField(
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(40)),
+                    focusedBorder: OutlineInputBorder(
+                        borderSide:
+                            const BorderSide(color: Colors.blueAccent, width: 1),
+                        borderRadius: BorderRadius.circular(30)),
+                    hintText: "Поиск",
+                    hintStyle: const TextStyle(color: Colors.grey),
+                    prefixIcon: const Icon(
+                      Icons.near_me_outlined,
+                      size: 25,
+                      color: Colors.black54,
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 20),
+
+                ///Location
+                Padding(
+                  padding:
+                      const EdgeInsets.all( 20),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      IconButton(
+                        onPressed: () {},
+                        icon: const Icon(
+                          Icons.location_on,
+                          size: 35,
+                        ),
+                      ),
+                      const Text(
+                        "Выбрать текущее местоположения",
+                        style: TextStyle(fontSize: 16),
+                      )
+                    ],
+                  ),
+                ),
+
+                ///Line
+                Container(
+                  margin: const EdgeInsets.only(bottom: 30),
+                  color: const Color(0xFFC4C4C4),
+                  height: 1,
+                  width: MediaQuery.of(context).size.width,
+                ),
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: TextButton(
+                    onPressed: () {
+                      frame3();
+                    },
+                    child: const Text(
+                      "Введите адрес вручную",
+                      style: TextStyle(
+                          color: Color(0xFF544AEB),
+                          fontSize: 17,
+                          fontWeight: FontWeight.w500),
+                    ),
+                  ),
+                )
+              ],
+            ),
+          ),
+
+          ///Save button
+          SizedBox(
+            height: 55,
+            width: MediaQuery.of(context).size.width,
+            child: ElevatedButton(
+                child: const Text(
+                  "Сохранить",
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
+                ),
+                style: ElevatedButton.styleFrom(
+                  primary: const Color(0xFF4F4E9A),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
+                onPressed: () {}),
+          )
+        ],
+      ),
+    );
+  }
+
+  Widget frame3() {
+    return Container(
+        padding:
+            const EdgeInsets.only(bottom: 20, left: 27, right: 27, top: 30),
+        decoration: BoxDecoration(
+            color: Colors.white, borderRadius: BorderRadius.circular(30)),
+        height: MediaQuery.of(context).size.height * 0.9,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            /// Create addres text
+            Row(
+              children: [
+                IconButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  icon: const Icon(Icons.arrow_back, size: 27),
+                ),
+                const SizedBox(width: 17),
+                const Text(
+                  "Введите адрес",
+                  style: TextStyle(color: Colors.black, fontSize: 17),
+                ),
+              ],
+            ),
+            const SizedBox(height: 60),
+
+            ///Region
+            TextField(
+              cursorColor: const Color(0xFF4F4E9A),
+              decoration: InputDecoration(
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10)),
+                  labelText: "Область",
+                  labelStyle: const TextStyle(color: Colors.grey),
+                  suffixIcon: PopupMenuButton(icon: const Icon(Icons.keyboard_arrow_down),
+                    itemBuilder: (context)=>[const PopupMenuItem(child: Text("Tashkent"),value: 1,),const PopupMenuItem(child:  Text("Andijan"),value: 2,)],)),
+            ),
+            const SizedBox(height: 15),
+
+            ///District / City
+            TextField(
+              cursorColor: const Color(0xFF4F4E9A),
+              decoration: InputDecoration(
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10)),
+                  focusedBorder: OutlineInputBorder(
+                      borderSide: const BorderSide(color: Colors.black),
+                      borderRadius: BorderRadius.circular(10)),
+                  labelText: "Район/Город",
+                  labelStyle: const TextStyle(color: Colors.grey),
+                  suffixIcon: PopupMenuButton(
+
+                      icon: const Icon(Icons.keyboard_arrow_down),
+                      itemBuilder:(context)=>[
+                    const PopupMenuItem(child: Text("Tashkent"),value: 1,),
+                    const PopupMenuItem(child:  Text("Andijon"),value: 2,),
+                  ])),
+            ),
+            const SizedBox(height: 10),
+
+            ///Street
+            TextField(
+              cursorColor: const Color(0xFF4F4E9A),
+              decoration: InputDecoration(
+                  border: OutlineInputBorder(
+                      borderSide: const BorderSide(color: Colors.black),
+                      borderRadius: BorderRadius.circular(10)),
+                  focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10)),
+                  labelText: "Улица",
+                  labelStyle: const TextStyle(color: Colors.grey),
+                  suffixIcon: PopupMenuButton(
+                    icon: const Icon(Icons.keyboard_arrow_down),
+                      itemBuilder: (context) => [
+                            const PopupMenuItem(
+                              child: Text("Tashkent"),
+                              value: 1,
+                            ),
+                            const PopupMenuItem(
+                              child:  Text("Andijan"),
+                              value: 2,
+                            )
+                          ])),
+            ),
+            const SizedBox(
+              height: 40,
+            ),
+
+            ///line
+            Container(
+              height: 1,
+              width: MediaQuery.of(context).size.width,
+              color: const Color(0xFFC4C4C4),
+            ),
+            const SizedBox(
+              height: 30,
+            ),
+            const Text(
+              "Точное место",
+              style: TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.w600,
+                  fontSize: 16),
+            ),
+            const SizedBox(
+              height: 30,
+            ),
+            const Text(
+              "Вы можете покозать, где именно находится жилье.",
+              style: TextStyle(fontSize: 16),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+
+            ///Map
+            Container(
+              alignment: Alignment.center,
+              child: const Text(
+                "Map",
+                style: TextStyle(fontSize: 30),
+              ),
+              height: 220,
+              width: MediaQuery.of(context).size.width,
+              decoration: BoxDecoration(
+                  border: Border.all(width: 1),
+                  borderRadius: BorderRadius.circular(10)),
+            ),
+            const SizedBox(
+              height: 25,
+            ),
+
+            ///Save button
+            SizedBox(
+              height: 55,
+              width: MediaQuery.of(context).size.width,
+              child: ElevatedButton(
+                  child: const Text(
+                    "Сохранить",
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                    primary: const Color(0xFF4F4E9A),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                  ),
+                  onPressed: () {}),
+            )
+          ],
+        ));
   }
 }
