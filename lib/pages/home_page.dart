@@ -24,8 +24,6 @@ class _HomePageState extends State<HomePage> {
     Facility(name: 'Iron')
   ];
 
-  popUpMenu() {}
-
   bool checkBoxValue = false;
   static const double _minVal = 1.0;
   static const double _maxVal = 100.0;
@@ -119,6 +117,27 @@ class _HomePageState extends State<HomePage> {
                   builder: (context) => frame3());
             },
             child: const Text("Frame 3",
+                style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white))),
+        const SizedBox(height: 100),
+        //price range bottom sheet
+        MaterialButton(
+            height: 50,
+            minWidth: 200,
+            shape: const StadiumBorder(),
+            color: Colors.blueAccent.shade700,
+            onPressed: () {
+              showModalBottomSheet(
+                  isScrollControlled: true,
+                  shape: const RoundedRectangleBorder(
+                      borderRadius:
+                          BorderRadius.vertical(top: Radius.circular(20))),
+                  context: context,
+                  builder: (context) => frame12());
+            },
+            child: const Text("Frame 12",
                 style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
@@ -291,6 +310,7 @@ class _HomePageState extends State<HomePage> {
         ]));
   }
 
+  ///saler page
   Widget frame2() {
     return Container(
       padding: const EdgeInsets.only(bottom: 30, left: 15, right: 15, top: 30),
@@ -328,8 +348,8 @@ class _HomePageState extends State<HomePage> {
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(40)),
                     focusedBorder: OutlineInputBorder(
-                        borderSide:
-                            const BorderSide(color: Colors.blueAccent, width: 1),
+                        borderSide: const BorderSide(
+                            color: Colors.blueAccent, width: 1),
                         borderRadius: BorderRadius.circular(30)),
                     hintText: "Поиск",
                     hintStyle: const TextStyle(color: Colors.grey),
@@ -344,8 +364,7 @@ class _HomePageState extends State<HomePage> {
 
                 ///Location
                 Padding(
-                  padding:
-                      const EdgeInsets.all( 20),
+                  padding: const EdgeInsets.all(20),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -414,6 +433,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
+  ///saler page
   Widget frame3() {
     return Container(
         padding:
@@ -453,8 +473,19 @@ class _HomePageState extends State<HomePage> {
                       borderRadius: BorderRadius.circular(10)),
                   labelText: "Область",
                   labelStyle: const TextStyle(color: Colors.grey),
-                  suffixIcon: PopupMenuButton(icon: const Icon(Icons.keyboard_arrow_down),
-                    itemBuilder: (context)=>[const PopupMenuItem(child: Text("Tashkent"),value: 1,),const PopupMenuItem(child:  Text("Andijan"),value: 2,)],)),
+                  suffixIcon: PopupMenuButton(
+                    icon: const Icon(Icons.keyboard_arrow_down),
+                    itemBuilder: (context) => [
+                      const PopupMenuItem(
+                        child: Text("Tashkent"),
+                        value: 1,
+                      ),
+                      const PopupMenuItem(
+                        child: Text("Andijan"),
+                        value: 2,
+                      )
+                    ],
+                  )),
             ),
             const SizedBox(height: 15),
 
@@ -470,12 +501,17 @@ class _HomePageState extends State<HomePage> {
                   labelText: "Район/Город",
                   labelStyle: const TextStyle(color: Colors.grey),
                   suffixIcon: PopupMenuButton(
-
                       icon: const Icon(Icons.keyboard_arrow_down),
-                      itemBuilder:(context)=>[
-                    const PopupMenuItem(child: Text("Tashkent"),value: 1,),
-                    const PopupMenuItem(child:  Text("Andijon"),value: 2,),
-                  ])),
+                      itemBuilder: (context) => [
+                            const PopupMenuItem(
+                              child: Text("Tashkent"),
+                              value: 1,
+                            ),
+                            const PopupMenuItem(
+                              child: Text("Andijon"),
+                              value: 2,
+                            ),
+                          ])),
             ),
             const SizedBox(height: 10),
 
@@ -491,14 +527,14 @@ class _HomePageState extends State<HomePage> {
                   labelText: "Улица",
                   labelStyle: const TextStyle(color: Colors.grey),
                   suffixIcon: PopupMenuButton(
-                    icon: const Icon(Icons.keyboard_arrow_down),
+                      icon: const Icon(Icons.keyboard_arrow_down),
                       itemBuilder: (context) => [
                             const PopupMenuItem(
                               child: Text("Tashkent"),
                               value: 1,
                             ),
                             const PopupMenuItem(
-                              child:  Text("Andijan"),
+                              child: Text("Andijan"),
                               value: 2,
                             )
                           ])),
@@ -572,5 +608,82 @@ class _HomePageState extends State<HomePage> {
             )
           ],
         ));
+  }
+
+  ///saler page
+  Widget frame12() {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 30),
+      height: MediaQuery.of(context).size.height * 0.65,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20),
+        color: Colors.white,
+      ),
+      child: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Text(
+              "Есть ли у вас особые удобства ?",
+              style: TextStyle(color: Colors.black, fontSize: 18),
+            ),
+            const SizedBox(height: 20,),
+            GridView.builder(
+              physics: const NeverScrollableScrollPhysics(),
+              shrinkWrap: true,
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+              ),
+              itemCount: 8,
+              itemBuilder: (BuildContext context, index) {
+                return gridContainer(Frame12.listFrame12[index]);
+              },
+            ),
+
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                TextButton(onPressed: (){},
+                    child: const Text("Назад",style: TextStyle(fontSize: 17),)),
+                ElevatedButton(
+
+                  onPressed: (){},
+                  child: const Text("Далее"),
+                  style: ElevatedButton.styleFrom(
+                      primary: const Color(0xFF4F4E9A)
+                  ),
+                )
+              ],
+            )
+
+          ],
+        ),
+      ),
+    );
+  }
+
+  Container gridContainer(Frame12 elem) {
+    return Container(
+      margin: const EdgeInsets.all(8,),
+      decoration: BoxDecoration(
+          border: Border.all(width: 1, color: Colors.grey),
+          borderRadius: BorderRadius.circular(5)),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            elem.item,
+            style: const TextStyle(fontSize: 14),
+          ),
+          const SizedBox(height: 10),
+          Image.asset(
+            elem.image,
+            height: 32,
+            width: 32                                              ,
+            fit: BoxFit.cover,
+          ),
+        ],
+      ),
+    );
   }
 }
