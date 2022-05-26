@@ -613,7 +613,7 @@ class _HomePageState extends State<HomePage> {
   ///saler page
   Widget frame12() {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 30),
+      padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 35),
       height: MediaQuery.of(context).size.height * 0.65,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
@@ -646,10 +646,15 @@ class _HomePageState extends State<HomePage> {
                 TextButton(onPressed: (){},
                     child: const Text("Назад",style: TextStyle(fontSize: 17),)),
                 ElevatedButton(
-
+                  
                   onPressed: (){},
                   child: const Text("Далее"),
                   style: ElevatedButton.styleFrom(
+                    
+                    fixedSize: const Size(100.0, 50.0),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10)
+                    ),
 
                       primary: const Color(0xFF4F4E9A)
                   ),
