@@ -641,7 +641,7 @@ class _HomePageState extends State<HomePage> {
             ),
 
             Row(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 TextButton(onPressed: (){},
                     child: const Text("Назад",style: TextStyle(fontSize: 17),)),
@@ -650,6 +650,7 @@ class _HomePageState extends State<HomePage> {
                   onPressed: (){},
                   child: const Text("Далее"),
                   style: ElevatedButton.styleFrom(
+
                       primary: const Color(0xFF4F4E9A)
                   ),
                 )
